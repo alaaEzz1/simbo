@@ -1,10 +1,10 @@
 # simbo
 
-A new Flutter project.
+### A Flutter app that empowers users to track workouts, set fitness goals, plan meals, and maintain a healthy lifestyle. Built with clean architecture, Firebase integration, and modern design.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### This project is a starting point for a Flutter application and still under develop.
 
 A few resources to get you started if this is your first Flutter project:
 
