@@ -65,9 +65,6 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
             email: emailController.text,
             password: passwordController.text
         ).then((value){
-          setState(() async {
-            isLogin = true;
-          });
           Navigator.pushReplacement(
               context,
               MaterialPageRoute(builder: (context) => const HomeScreen())

@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:simbo/presentation/screens/login_screen.dart';
 
-import 'home_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   static const signupRouteName = "signup_screen";
