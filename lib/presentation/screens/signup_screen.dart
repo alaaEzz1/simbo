@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:simbo/presentation/screens/login_screen.dart';
-
+import 'package:simbo/presentation/widgets/views/button.dart';
+import 'package:simbo/presentation/widgets/views/text_form.dart';
 
 class SignUpScreen extends StatefulWidget {
   static const signupRouteName = "signup_screen";
@@ -73,7 +73,6 @@ class _SignUpScreenState extends State<SignUpScreen>
       showSnackBar("Height is required");
     } else {
       try {
-
         setState(() {
           _isRegistering = true;
         });
@@ -130,226 +129,56 @@ class _SignUpScreenState extends State<SignUpScreen>
                 const SizedBox(
                   height: 20,
                 ),
-                if(_isRegistering)
+                if (_isRegistering)
                   const Center(
                     child: CircularProgressIndicator(),
                   )
                 else
                   Column(
                     children: [
-                      Container(
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 50,
-                        ),
-                        child: TextFormField(
-                          controller: fullNameController,
-                          style: const TextStyle(color: Colors.redAccent),
-                          decoration: InputDecoration(
-                            hintText: "Full Name",
-                            hintStyle: const TextStyle(color: Colors.redAccent),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.redAccent,
-                                width: 2,
-                              ),
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 20),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.redAccent,
-                                width: 2,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.redAccent,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                          keyboardType: TextInputType.name,
-                        ),
+                      appTextForm(
+                        hintTitle: "Full Name",
+                        controller: fullNameController,
+                        type: TextInputType.name,
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 50,
-                        ),
-                        child: TextFormField(
-                          controller: emailController,
-                          style: const TextStyle(color: Colors.redAccent),
-                          decoration: InputDecoration(
-                            hintText: "Email",
-                            hintStyle: const TextStyle(color: Colors.redAccent),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.redAccent,
-                                width: 2,
-                              ),
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 20),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.redAccent,
-                                width: 2,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.redAccent,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                          keyboardType: TextInputType.emailAddress,
-                        ),
+                      appTextForm(
+                        hintTitle: "Email",
+                        controller: emailController,
+                        type: TextInputType.emailAddress,
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 50,
-                        ),
-                        child: TextFormField(
-                          controller: passwordController,
-                          style: const TextStyle(color: Colors.redAccent),
-                          decoration: InputDecoration(
-                            hintText: "Password",
-                            hintStyle: const TextStyle(color: Colors.redAccent),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.redAccent,
-                                width: 2,
-                              ),
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 20),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.redAccent,
-                                width: 2,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.redAccent,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                          obscureText: true,
-                        ),
+                      appTextForm(
+                        hintTitle: "Password",
+                        controller: passwordController,
+                        type: TextInputType.visiblePassword,
+                        obscureText: true,
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 50,
-                        ),
-                        child: TextFormField(
-                          controller: weightController,
-                          style: const TextStyle(color: Colors.redAccent),
-                          decoration: InputDecoration(
-                            hintText: "Weight",
-                            hintStyle: const TextStyle(color: Colors.redAccent),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.redAccent,
-                                width: 2,
-                              ),
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 20),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.redAccent,
-                                width: 2,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.redAccent,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                          keyboardType: TextInputType.number,
-                        ),
+                      appTextForm(
+                        hintTitle: "Weight",
+                        controller: weightController,
+                        type: TextInputType.number,
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(
-                          horizontal: 50,
-                        ),
-                        child: TextFormField(
-                          controller: heightController,
-                          style: const TextStyle(color: Colors.redAccent),
-                          decoration: InputDecoration(
-                            hintText: "Height",
-                            hintStyle: const TextStyle(color: Colors.redAccent),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.redAccent,
-                                width: 2,
-                              ),
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 20),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.redAccent,
-                                width: 2,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.0),
-                              borderSide: const BorderSide(
-                                color: Colors.redAccent,
-                                width: 3,
-                              ),
-                            ),
-                          ),
-                          keyboardType: TextInputType.number,
-                        ),
+                      appTextForm(
+                        hintTitle: "Height",
+                        type: TextInputType.number,
+                        controller: heightController,
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      Container(
-                        padding:
-                        const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                        child: ElevatedButton(
-                          onPressed: _signup,
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.redAccent),
-                          child: const Text(
-                            'Create New Account...',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ),
-                      ),
+                      appButtonStyle(
+                          title: "Create New Account", function: _signup),
                       const SizedBox(
                         height: 20,
                       ),
